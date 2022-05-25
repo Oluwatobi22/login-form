@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="bootstrap-4.0.0-dist/css/bootstrap.min.css">
+    <style>
+        .form-control{
+            box-shadow: 0 0 9px 2px rgb(100, 100, 100, 0.30);
+        }
+        .active {
+            color: black;
+        }
+        .active:hover {
+            color: rgb(149, 17, 17);
+            text-decoration: none;
+        }
+    </style>
+    <script>
+        function login(){
+            Email=email.value;
+            Pass=pass.value;
+            // alert(Email,Pass)
+            tobi = JSON.parse(localStorage.getItem("register"));    
+                for (i=0;i<tobi.length;i++){
+                if(Email==tobi[i].Email&&Pass==tobi[i].Pass){
+                       window.location.href = "dashboard.html";
+                    }else{
+                        alert("invalid details supply");
+                    }
+                }
+        }
+           
+            
+    </script>
+</head>
+<body style="margin:0px;padding:0px">
+    <div class="container my-5 ">
+        <div class="row justify-content-center py-5 ">
+            <div class="col-md-4 text-center form-control py-5 px-4  ">
+                <div class="form-group text-center">
+                    <div class="row">
+                        <label for="Email:">Email</label>
+                        <input type="text" class="form-control mb-4" id="email" placeholder="Your Name" >
+                        <label for="Password:">Password</label>
+                        <input type="text" class="form-control mb-4"id="pass" placeholder="Password" >
+                    </div>
+                    <div class="row">
+                        <div class="form-check inline">
+                            <input type="checkbox" class="form-check-input" id="exampleCheck1">
+                            <label class="text-uppercase" for="exampleCheck1">click here</label>
+                            <button onclick="login()" type="submit" class="btn btn-primary messag text-center" style="padding:2px 20px;margin: auto ;">Login</button>
+                            <span><a href="register.html" style="margin:0px 0px 0px 97px;" class="active">SIGN UP</a></span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <script src="bootstrap-4.0.0-dist/js/bootstrap.min.js"></script>  
+</body>
+</html>

@@ -1,0 +1,111 @@
+ <!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="bootstrap-4.0.0-dist/css/bootstrap.min.css">
+    <script type="text/javascript">
+       // I declared variable for an array,declare variable and assign it  values of each input field and i used the push() object to insert  each input in the form of object.   
+        var together = [];
+        function show(){
+                firstName = fname.value;
+                fname.value = "";
+                LastName = lname.value;
+                lname.value = "";
+                eemail = email.value;
+                email.value = "";
+                ppp = pass.value;
+                pass.value = ""; 
+                together.push(
+                    {
+                    "firstName":firstName,
+                    "LastName":LastName,
+                    "Email": eemail,
+                    "Pass" :ppp
+                }
+                ); 
+             // To stringify the value of the array
+             console.log(together);
+            localStorage.setItem("register", JSON.stringify(together));
+            tobi = JSON.parse(localStorage.getItem("register"));
+           
+        }
+    </script>
+    <style>
+        .form-control{
+            box-shadow: 0 0 9px 2px rgb(100, 100, 100, 0.30);
+        }
+    </style>
+</head>
+<body>
+    <div class="container mt-5 ">
+        <div class="row  justify-content-center">
+            <div class="col-md-6 border border-3 form-group py-5">
+                <h1 class="display-5 fw-bold text-center">Registration page</h1>
+                <label for="firstName:" style="color:white;">First-Name</label>
+                <input type="text" class="form-control" value="" id="fname" placeholder="Your Name">
+                <div id="errorMessage"></div>
+                <label for="LastName:" style="color:white;">Last-Name</label>
+                <input type="text" class="form-control" value="" id="lname" placeholder="Last-Name">
+                <div id="error11"></div>
+                <label for="Email:" style="color:white;">Email</label>
+                <input type="text" class="form-control" value="" id="email" placeholder="Email">
+                <div id="error22"></div>
+                <label for="phone:" style="color:white;">Password</label>
+                <input type="text" class="form-control" value="" id="pass" placeholder="Password">
+                <div id="error33"></div>
+                <div class="text-center mt-4">
+                    <button  type="submit" class="btn btn-dark btn-lg" onclick="show()" onclick="display()">Sign up</button>
+                </div>
+            </div>
+        </div>
+    </div>
+    <script>
+        function display(){
+            fnRegex = /^([a-z]{4,})/;
+            if (!fnRegex.test(fname.value))
+            {
+                fname.className = "form-control is-invalid border border-3 border-danger";
+                errorMessage.innerText = "input at least 2 characters";
+                errorMessage.style.color = "red";
+            }
+            else
+            {
+                errorMessage.className = " is-valid";
+                errorMessage.innerText = " ";
+            }
+            fnRegex = /[a-z]{3,}/;
+            if(!fnRegex.test(lname.value)){
+                lname.className = "form-control is-invalid border border-3 border-danger";
+                error11.innerText = "input at least 3 characters";
+                error11.style.color = "red";
+            }else{
+                error11.className = " is-valid";
+                error11.innerText = ""; 
+            }
+            emailRegex = /^[a-z@.a-z]+$/
+            if(!emailRegex.test(email.value)){
+                email.className = "form-control is-invalid border border-3 border-danger";
+                error22.innerText = "Input the value of email";
+                error22.style.color = "red";
+            }else{
+               error22.className = "is-valid";
+               error22.innerText = ""; 
+            }
+            passRegex = /^([0-9]{6,})$/
+            if(!passRegex.test(pass.value)){
+                pass.className = "form-control is-invalid border border-3 border-danger";
+                error33.innerText = "Input a least 6 input";
+                error33.style.color = "red";
+            }else{
+               errror33.className = "is-valid";
+               error33.innerText = ""; 
+            }
+            
+        }   
+    </script>
+    <!-- <script src="bootstrap-4.0.0-dist/j,s/bootstrap.min.js"></script> -->
+</body>
+</html>
